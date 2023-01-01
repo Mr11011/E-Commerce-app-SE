@@ -1,11 +1,12 @@
 package com.example.buyweme.data
 
 data class User(
-    val firstname: String,
+    var firstname: String,
     val LastName: String,
-    val password: String,
     val email: String,
     val ImagePath: String?
 ) {
-    constructor() : this("", "", "", "", "")
+    constructor() : this("", "", "", "")
+    constructor(trim: String, trim1: String, trim2: String) : this()
+
 }

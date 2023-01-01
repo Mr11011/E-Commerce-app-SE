@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/blury_background" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/appname"
+            style="@style/h4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:drawableStart="@drawable/ic_kleine_shape"
+            android:drawablePadding="10dp"
+            android:text="BuyWZme"
+            android:textSize="32dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvRightAddressForShopping"
+            style="@style/h2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="125dp"
+            android:gravity="center"
+            android:text="@string/rightAddress"
+            android:textAlignment="center"
+            android:textSize="33sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/appname"
+            app:layout_constraintStart_toStartOf="@id/appname"
+            app:layout_constraintTop_toTopOf="@id/appname" />
+
+        <TextView
+            android:id="@+id/tvRightAddressForShopping2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/sf_pro_display"
+            android:gravity="center"
+            android:text="@string/quality"
+            android:textAlignment="center"
+            android:textSize="27sp"
+            app:layout_constraintEnd_toEndOf="@id/tvRightAddressForShopping"
+            app:layout_constraintStart_toStartOf="@id/tvRightAddressForShopping"
+            app:layout_constraintTop_toBottomOf="@id/tvRightAddressForShopping" />
+
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/buttonRegisterAccOption"
+            style="@style/blueButtonStyle"
+            android:layout_width="165dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginBottom="30dp"
+            android:text="REGISTER"
+            app:layout_constraintBottom_toTopOf="@id/buttonLoginAccOption"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRightAddressForShopping2" />
+
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/buttonLoginAccOption"
+            style="@style/blueButtonStyle"
+            android:layout_width="165dp"
+            android:layout_height="40dp"
+            android:text="LOGIN"
+            app:layout_constraintBottom_toBottomOf="@id/buttonRegisterAccOption"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonRegisterAccOption" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

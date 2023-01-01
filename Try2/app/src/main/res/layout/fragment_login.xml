@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/blury_background" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/appname"
+            style="@style/h4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="95dp"
+            android:drawableStart="@drawable/ic_kleine_shape"
+            android:drawablePadding="10dp"
+            android:text="BuyWZme"
+            android:textSize="32dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+           />
+
+        <TextView
+            android:id="@+id/nav_to_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="15dp"
+            android:gravity="center"
+            android:text="Click on me to register 👈"
+            android:textColor="@color/g_light_red"
+            android:textAlignment="center"
+            android:textSize="26sp"
+            android:textStyle="bold"
+
+            android:fontFamily="@font/sf_pro_display"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appname" />
+
+        <EditText
+            android:id="@+id/email_edit_text_login"
+            style="@style/editText"
+            android:layout_width="350dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="90dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textSize="22dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nav_to_register"
+            android:textColor="@color/black"
+            android:textColorHint="@color/g_blue_gray200"/>
+
+        <EditText
+            android:id="@+id/password_edit_text_login"
+            style="@style/editText"
+            android:layout_width="350dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="50dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textSize="22dp"
+            app:layout_constraintEnd_toEndOf="@id/email_edit_text_login"
+            app:layout_constraintStart_toStartOf="@id/email_edit_text_login"
+            app:layout_constraintTop_toBottomOf="@+id/email_edit_text_login"
+            android:textColor="@color/black"
+            android:textColorHint="@color/g_blue_gray200"/>
+
+        <TextView
+            android:id="@+id/forgot_password"
+            style="@style/h2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="70dp"
+            android:gravity="center"
+            android:text="Forgot Password ?"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/password_edit_text_login"
+            app:layout_constraintStart_toStartOf="@id/password_edit_text_login"
+            app:layout_constraintTop_toBottomOf="@id/password_edit_text_login" />
+
+
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/buttonLoginFrag"
+            style="@style/blueButtonStyle"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="85dp"
+            android:layout_marginBottom="30dp"
+            android:text="LOGIN"
+            app:layout_constraintEnd_toEndOf="@id/forgot_password"
+            app:layout_constraintStart_toStartOf="@id/forgot_password"
+            app:layout_constraintTop_toBottomOf="@id/forgot_password"
+            app:spinning_bar_color="@color/white"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

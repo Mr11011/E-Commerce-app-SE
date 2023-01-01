@@ -111,7 +111,7 @@
 
             />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/registerbutton"
             style="@style/blueButtonStyle"
             android:layout_width="250dp"
