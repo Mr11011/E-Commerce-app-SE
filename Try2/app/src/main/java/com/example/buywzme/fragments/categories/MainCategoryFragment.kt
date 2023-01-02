@@ -6,11 +6,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.buyweme.R
@@ -23,12 +23,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
 private val TAG = "MainCategoryFragment "
+
 @AndroidEntryPoint
 class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
     private lateinit var binding: FragmentMainCategoryBinding
     private lateinit var specialProductsAdapter: SpecialProductsAdapter
     private lateinit var BestProductAdapter: BestProductAdapter
-    private lateinit var BestDealsAdapter:BestDealsAdapter
+    private lateinit var BestDealsAdapter: BestDealsAdapter
     private val viewModel by viewModels<MainCategoryViewModel>()
 
     override fun onCreateView(
@@ -47,6 +48,19 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         setupBestDealsRV()
         setupBestProducts()
 
+//        specialProductsAdapter.onClick = { product ->
+//        val bundle = Bundle()
+//        bundle.putParcelable("product",product)
+////        bundle.putString("flag", PRODUCT_FLAG)
+//            findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,bundle)
+//
+//        }
+
+
+
+
+
+
 
 
         lifecycleScope.launchWhenStarted {
@@ -62,7 +76,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                     is Resource.Error -> {
                         hideLoading()
                         Log.e(TAG, it.message.toString())
-                        Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     }
 
 
@@ -85,7 +99,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                     is Resource.Error -> {
                         hideLoading()
                         Log.e(TAG, it.message.toString())
-                        Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     }
 
 
@@ -107,7 +121,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                     is Resource.Error -> {
                         hideLoading()
                         Log.e(TAG, it.message.toString())
-                        Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     }
 
 
@@ -120,10 +134,10 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
     }
 
     private fun setupBestProducts() {
-        BestProductAdapter= BestProductAdapter()
+        BestProductAdapter = BestProductAdapter()
         binding.bestProducts.apply {
             layoutManager =
-               GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
+                GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
             adapter = BestProductAdapter
         }
     }
@@ -131,21 +145,21 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
     private fun setupBestDealsRV() {
         BestDealsAdapter = BestDealsAdapter()
         binding.rvbestDeals.apply {
-            layoutManager= LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-            adapter= BestDealsAdapter
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = BestDealsAdapter
 
         }
-
 
 
     }
 
     private fun hideLoading() {
-        binding.mainCategoryProgressBar.visibility= View.GONE
+        binding.mainCategoryProgressBar.visibility = View.GONE
     }
 
     private fun showLoading() {
-        binding.mainCategoryProgressBar.visibility= View.VISIBLE
+        binding.mainCategoryProgressBar.visibility = View.VISIBLE
     }
 
     private fun setupSpecialProduct() {

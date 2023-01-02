@@ -2,6 +2,7 @@ package com.example.buywzme.adapters
 
 import android.graphics.Paint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -11,7 +12,7 @@ import com.example.buyweme.databinding.ProductRvItemBinding
 import com.example.buywzme.data.Product
 
 class BestProductAdapter : RecyclerView.Adapter<BestProductAdapter.BestProductsViewHolder>() {
-
+    var onClick : ((Product) -> Unit)? = null
     inner class BestProductsViewHolder(private val binding: ProductRvItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
@@ -21,14 +22,13 @@ class BestProductAdapter : RecyclerView.Adapter<BestProductAdapter.BestProductsV
                     val remainingPricePercentage = 1f - it
                     val priceAfterOffer = remainingPricePercentage * product.price
                     tvNewPrice.text = " $ ${String.format("%.2f", priceAfterOffer)} "
-//                    tvNewPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                    tvPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
 
                 }
-
-            }
-            if (product.offerPercentage == null) {
-                binding.tvPrice.text = "$ ${product.price}"
-                binding.tvName.text = product.name
+                if (product.offerPercentage == null)
+                    tvNewPrice.visibility = View.INVISIBLE
+                tvPrice.text = "$ ${product.price} "
+                tvName.text = product.name
 
             }
 
@@ -59,6 +59,10 @@ class BestProductAdapter : RecyclerView.Adapter<BestProductAdapter.BestProductsV
     override fun onBindViewHolder(holder: BestProductsViewHolder, position: Int) {
         val product = differ.currentList[position]
         holder.bind(product)
+        holder.itemView.setOnClickListener {
+            onClick?.invoke(product)
+
+        }
     }
 
     override fun getItemCount(): Int {
